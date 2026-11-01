@@ -1,1 +1,27 @@
 
+name: NEXUS CRM PRO - Android Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract project ZIP
+        run: |
+          unzip -o NEXUS_CRM_PRO_Architecture_v1.zip -d extracted
+
+      - name: Show extracted files
+        run: |
+          find extracted -maxdepth 5 -type f | sort
+
+      - name: Check Android project
+        run: |
+          find extracted -name settings.gradle.kts
