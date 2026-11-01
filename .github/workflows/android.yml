@@ -21,6 +21,13 @@ jobs:
       - name: Show extracted files
         run: |
           find extracted -maxdepth 5 -type f | sort
+      
+      - name: Inspect Android directory
+        run: |
+          echo "ANDROID FILES:"
+          find extracted/NEXUS_CRM_PRO/android -type f | sort
+          echo "BACKEND FILES:"
+          find extracted/NEXUS_CRM_PRO/backend -type f | sort
 
       - name: Check Android project
         run: |
